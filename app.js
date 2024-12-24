@@ -22,14 +22,13 @@ app.get('/countryInfo', async (req, res) => {
     }
 });
 
-app.get('/health', async (req, res) => {
-    const service_health = {'status': 'OK'};
-    
-    return jsonify({
-        'current_service': service_health,
-    }), 200
-
+app.get('/health', (req, res) => {
+    const service_health = { status: 'OK' };
+    res.status(200).json({
+        current_service: service_health,
+    });
 });
+
 
 
 // Start the server
