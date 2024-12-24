@@ -22,6 +22,16 @@ app.get('/countryInfo', async (req, res) => {
     }
 });
 
+app.get('/health', async (req, res) => {
+    const service_health = {'status': 'OK'};
+    
+    return jsonify({
+        'current_service': service_health,
+    }), 200
+
+});
+
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Proxy server running at http://localhost:${PORT}`);
