@@ -22,6 +22,18 @@ app.get('/countryInfo', async (req, res) => {
     }
 });
 
+app.get('/user-location', async (req, res) => {
+    const apiUrl = `http://ip-api.com/json`;
+
+    try {
+        const response = await axios.get(apiUrl);
+        res.json(response.data);
+    } catch (error) {
+        console.error('Error fetching data from ip-api:', error.message);
+        res.status(500).json({ error: 'Failed to fetch data from IP API' });
+    }
+});
+
 app.get('/health', (req, res) => {
     const service_health = { status: 'OK' };
     res.status(200).json({
